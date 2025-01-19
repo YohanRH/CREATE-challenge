@@ -177,5 +177,10 @@
         "node": ">=8"
       }
     }
+  },
+  "dependencies": {
+    "csv-parser": "^3.1.0",
+    "express": "^4.21.2",
+    "sqlite3": "^5.1.7"
   }
 }
