@@ -179,6 +179,7 @@
     }
   },
   "dependencies": {
+    "axios": "^1.7.9",
     "csv-parser": "^3.1.0",
     "express": "^4.21.2",
     "sqlite3": "^5.1.7"

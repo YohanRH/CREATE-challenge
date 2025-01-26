@@ -4,6 +4,8 @@ const path = require('path');
 const ejsMate = require('ejs-mate');
 const fs = require("fs")
 const csv = require('csv-parser');
+const axios = require('axios');
+
 // Database Imports
 const {createTable, importCSV, checkTableExists, dropTable} = require('./data/db.js')
 const dataRoutes = require('./routes/dataRoutes.js')
@@ -33,14 +35,28 @@ checkTableExists((exists) => {
     }
 });
 
-
-
-// Routes
-app.use('/api', dataRoutes);
+// Pages
 
 app.get('/', (req,res)=>{ 
     res.render("pages/landing")
 })
+
+app.get('/exercise', async (req, res) => {
+    try {
+        const response = await axios.get('http://localhost:3000/api/data')
+        const data = response.data;
+        console.log(data);
+        res.render('pages/exercises', {data})
+    }
+    catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).send('Internal Server Error');
+      }
+});
+
+// Routing
+app.use('/api', dataRoutes);
+
 
 
 app.listen(3000, () => {

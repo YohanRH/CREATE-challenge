@@ -1,0 +1,15 @@
+<% layout('layouts/boilerplate') %>
+<h1>Data from Server</h1>
+  <ul>
+    <% data.forEach(item => { %>
+    <div>
+        <h3><%= item.Exercise %></h3>
+        <li><b>Difficulty: </b> <%= item.Difficulty_Level%></li>
+        <li><b>Posture:</b> <%= item.Posture%></li>
+        <li><b>Grip:</b>  <%= item.Grip%></li>
+        <li><b>Primary Classification:</b> <%= item.Primary_Exercise_Classification%></li>
+    </div>
+      
+    
+    <% }) %>
+  </ul>
